@@ -24,7 +24,16 @@ struct Song : Hashable {
 struct AlbumArt : View {
     var album : Album
     var body : some View {
-        EmptyView()
+        ZStack(alignment: .bottom, content: {
+            Image(album.image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 170, height: 200, alignment: .center)
+            ZStack {
+                Blur(style: .dark)
+                Text(album.name).foregroundColor(.white)
+            }.frame(height: 60, alignment: .center)
+        }).frame(width: 170, height: 200, alignment: .center).clipped().cornerRadius(20).shadow(radius: 10).padding(20)
     }
 }
 
@@ -69,10 +78,12 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 ScrollView(.horizontal, showsIndicators: false, content: {
-                    ForEach(self.albums, id: \.self, content: {
-                        album in
-                        AlbumArt(album: album)
-                    })
+                    HStack {
+                        ForEach(self.albums, id: \.self, content: {
+                            album in
+                            AlbumArt(album: album)
+                        })
+                    }
                 })
                 VStack {
                     ForEach((self.currentAlbum?.songs ?? self.albums.first?.songs) ?? [
@@ -92,6 +103,12 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AlbumArt(album:
+            Album(id: UUID(), name: "Hybrid Theory", image: "Hybrid Theory", songs: [
+            Song(id: UUID(), name: "Song 1", time: "3:54"),
+            Song(id: UUID(), name: "Song 2", time: "4:51"),
+            Song(id: UUID(), name: "Song 3", time: "3:24"),
+            Song(id: UUID(), name: "Song 4", time: "4:11"),
+        ]))
     }
 }

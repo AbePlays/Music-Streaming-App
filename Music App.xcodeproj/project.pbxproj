@@ -13,6 +13,7 @@
 		304973852524556E0050EF27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304973842524556E0050EF27 /* Assets.xcassets */; };
 		304973882524556E0050EF27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304973872524556E0050EF27 /* Preview Assets.xcassets */; };
 		3049738B2524556E0050EF27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 304973892524556E0050EF27 /* LaunchScreen.storyboard */; };
+		3049739325245EF10050EF27 /* BlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3049739225245EF10050EF27 /* BlurEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		304973872524556E0050EF27 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3049738A2524556E0050EF27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3049738C2524556E0050EF27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3049739225245EF10050EF27 /* BlurEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				3049737E2524556B0050EF27 /* AppDelegate.swift */,
 				304973802524556B0050EF27 /* SceneDelegate.swift */,
 				304973822524556B0050EF27 /* ContentView.swift */,
+				3049739225245EF10050EF27 /* BlurEffect.swift */,
 				304973842524556E0050EF27 /* Assets.xcassets */,
 				304973892524556E0050EF27 /* LaunchScreen.storyboard */,
 				3049738C2524556E0050EF27 /* Info.plist */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3049737F2524556B0050EF27 /* AppDelegate.swift in Sources */,
+				3049739325245EF10050EF27 /* BlurEffect.swift in Sources */,
 				304973812524556B0050EF27 /* SceneDelegate.swift in Sources */,
 				304973832524556B0050EF27 /* ContentView.swift in Sources */,
 			);
