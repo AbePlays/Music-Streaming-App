@@ -63,10 +63,28 @@ struct ContentView: View {
             Song(id: UUID(), name: "Song 16", time: "4:11"),
         ])]
     
+    let currentAlbum : Album?
+    
     var body: some View {
         NavigationView {
             ScrollView {
-                ScrollView(.horizontal, showsIndicators: false, content: <#T##() -> _#>)
+                ScrollView(.horizontal, showsIndicators: false, content: {
+                    ForEach(self.albums, id: \.self, content: {
+                        album in
+                        AlbumArt(album: album)
+                    })
+                })
+                VStack {
+                    ForEach((self.currentAlbum?.songs ?? self.albums.first?.songs) ?? [
+                        Song(id: UUID(), name: "Song 1", time: "3:54"),
+                        Song(id: UUID(), name: "Song 2", time: "4:51"),
+                        Song(id: UUID(), name: "Song 3", time: "3:24"),
+                        Song(id: UUID(), name: "Song 4", time: "4:11"),
+                        ], id: \.self, content: {
+                            song in
+                            SongCell(song: song)
+                    })
+                }
             }
         }
     }
