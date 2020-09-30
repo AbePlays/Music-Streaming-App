@@ -81,7 +81,7 @@ struct ContentView: View {
             Song(id: UUID(), name: "Song 16", time: "4:11"),
         ])]
     
-    let currentAlbum : Album?
+    @State private var currentAlbum : Album?
     
     var body: some View {
         NavigationView {
@@ -90,7 +90,9 @@ struct ContentView: View {
                     HStack {
                         ForEach(self.albums, id: \.self, content: {
                             album in
-                            AlbumArt(album: album)
+                            AlbumArt(album: album).onTapGesture {
+                                self.currentAlbum = album
+                            }
                         })
                     }
                 })
@@ -105,13 +107,13 @@ struct ContentView: View {
                             SongCell(song: song)
                     })
                 }
-            }
+            }.navigationBarTitle("Linkin Park")
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SongCell(song: Song(id: UUID(), name: "Song 4", time: "4:11"))
+        ContentView()
     }
 }

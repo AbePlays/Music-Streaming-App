@@ -20,13 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView(currentAlbum:
-            Album(id: UUID(), name: "Hybrid Theory", image: "Hybrid Theory", songs: [
-            Song(id: UUID(), name: "Song 1", time: "3:54"),
-            Song(id: UUID(), name: "Song 2", time: "4:51"),
-            Song(id: UUID(), name: "Song 3", time: "3:24"),
-            Song(id: UUID(), name: "Song 4", time: "4:11"),
-        ]))
+        let contentView = ContentView()
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
