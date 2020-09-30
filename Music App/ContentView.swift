@@ -40,7 +40,16 @@ struct AlbumArt : View {
 struct SongCell : View {
     var song : Song
     var body : some View {
-        EmptyView()
+        HStack {
+            ZStack {
+                Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(.blue)
+
+                Circle().frame(width: 20, height: 20, alignment: .center).foregroundColor(.white)
+            }
+            Text(song.name).bold()
+            Spacer()
+            Text(song.time)
+        }.padding(20)
     }
 }
 
@@ -103,12 +112,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        AlbumArt(album:
-            Album(id: UUID(), name: "Hybrid Theory", image: "Hybrid Theory", songs: [
-            Song(id: UUID(), name: "Song 1", time: "3:54"),
-            Song(id: UUID(), name: "Song 2", time: "4:51"),
-            Song(id: UUID(), name: "Song 3", time: "3:24"),
-            Song(id: UUID(), name: "Song 4", time: "4:11"),
-        ]))
+        SongCell(song: Song(id: UUID(), name: "Song 4", time: "4:11"))
     }
 }
