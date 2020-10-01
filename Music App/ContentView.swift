@@ -41,18 +41,21 @@ struct AlbumArt : View {
 }
 
 struct SongCell : View {
+    var album : Album
     var song : Song
     var body : some View {
-        HStack {
-            ZStack {
-                Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(.blue)
+        NavigationLink(destination: PlayerView(album: album, song: song), label: {
+            HStack {
+                ZStack {
+                    Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(.blue)
 
-                Circle().frame(width: 20, height: 20, alignment: .center).foregroundColor(.white)
-            }
-            Text(song.name).bold()
-            Spacer()
-            Text(song.time)
-        }.padding(20)
+                    Circle().frame(width: 20, height: 20, alignment: .center).foregroundColor(.white)
+                }
+                Text(song.name).bold()
+                Spacer()
+                Text(song.time)
+            }.padding(20)
+        }).buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -113,7 +116,7 @@ struct ContentView: View {
                         Song(id: UUID(), name: "Song 4", time: "4:11"),
                         ], id: \.self, content: {
                             song in
-                            SongCell(song: song)
+                            SongCell(album: self.currentAlbum ?? self.albums.first!, song: song)
                     })
                 }
             }.navigationBarTitle("Linkin Park")
