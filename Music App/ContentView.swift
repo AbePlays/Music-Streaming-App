@@ -74,11 +74,17 @@ struct ContentView: View {
             Song(id: UUID(), name: "Song 11", time: "3:24"),
             Song(id: UUID(), name: "Song 12", time: "4:11"),
         ]),
-        Album(id: UUID(), name: "Minutes to Midnight", image: "Minutes to Midnight", songs: [
+        Album(id: UUID(), name: "Living Things", image: "Living Things", songs: [
             Song(id: UUID(), name: "Song 13", time: "3:54"),
             Song(id: UUID(), name: "Song 14", time: "4:51"),
             Song(id: UUID(), name: "Song 15", time: "3:24"),
             Song(id: UUID(), name: "Song 16", time: "4:11"),
+        ]),
+        Album(id: UUID(), name: "Minutes to Midnight", image: "Minutes to Midnight", songs: [
+            Song(id: UUID(), name: "Song 17", time: "3:54"),
+            Song(id: UUID(), name: "Song 18", time: "4:51"),
+            Song(id: UUID(), name: "Song 19", time: "3:24"),
+            Song(id: UUID(), name: "Song 20", time: "4:11"),
         ])]
     
     @State private var currentAlbum : Album?
