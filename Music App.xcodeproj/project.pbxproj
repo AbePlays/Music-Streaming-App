@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		304973882524556E0050EF27 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 304973872524556E0050EF27 /* Preview Assets.xcassets */; };
 		3049738B2524556E0050EF27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 304973892524556E0050EF27 /* LaunchScreen.storyboard */; };
 		3049739325245EF10050EF27 /* BlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3049739225245EF10050EF27 /* BlurEffect.swift */; };
+		30B5BECC2526DD5F004AFF9C /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B5BECB2526DD5F004AFF9C /* Data.swift */; };
 		30BAECFF25257CA6001D2448 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BAECFE25257CA6001D2448 /* PlayerView.swift */; };
 		30C71B742526D86800C29CA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30C71B732526D86800C29CA2 /* GoogleService-Info.plist */; };
 		879FCD84105110D57CE4C3D6 /* Pods_Music_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FC84C6A1E9E778F5414452 /* Pods_Music_App.framework */; };
@@ -30,6 +31,7 @@
 		3049738A2524556E0050EF27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3049738C2524556E0050EF27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3049739225245EF10050EF27 /* BlurEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurEffect.swift; sourceTree = "<group>"; };
+		30B5BECB2526DD5F004AFF9C /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		30BAECFE25257CA6001D2448 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		30C71B732526D86800C29CA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58FC84C6A1E9E778F5414452 /* Pods_Music_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +56,6 @@
 				CE6982EADE56D65100BEE98D /* Pods-Music App.debug.xcconfig */,
 				2ACF63B9BFF1F56D310F0A08 /* Pods-Music App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,6 +84,7 @@
 				304973802524556B0050EF27 /* SceneDelegate.swift */,
 				304973822524556B0050EF27 /* ContentView.swift */,
 				30BAECFE25257CA6001D2448 /* PlayerView.swift */,
+				30B5BECB2526DD5F004AFF9C /* Data.swift */,
 				3049739225245EF10050EF27 /* BlurEffect.swift */,
 				30C71B732526D86800C29CA2 /* GoogleService-Info.plist */,
 				304973842524556E0050EF27 /* Assets.xcassets */,
@@ -226,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3049737F2524556B0050EF27 /* AppDelegate.swift in Sources */,
+				30B5BECC2526DD5F004AFF9C /* Data.swift in Sources */,
 				3049739325245EF10050EF27 /* BlurEffect.swift in Sources */,
 				304973812524556B0050EF27 /* SceneDelegate.swift in Sources */,
 				30BAECFF25257CA6001D2448 /* PlayerView.swift in Sources */,

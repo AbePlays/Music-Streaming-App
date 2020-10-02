@@ -48,7 +48,7 @@ struct SongCell : View {
             HStack {
                 ZStack {
                     Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(.blue)
-
+                    
                     Circle().frame(width: 20, height: 20, alignment: .center).foregroundColor(.white)
                 }
                 Text(song.name).bold()
@@ -61,37 +61,7 @@ struct SongCell : View {
 
 struct ContentView: View {
     
-    var albums = [
-        Album(id: UUID(), name: "Hybrid Theory", image: "Hybrid Theory", songs: [
-            Song(id: UUID(), name: "Song 1", time: "3:54"),
-            Song(id: UUID(), name: "Song 2", time: "4:51"),
-            Song(id: UUID(), name: "Song 3", time: "3:24"),
-            Song(id: UUID(), name: "Song 4", time: "4:11"),
-        ]),
-        Album(id: UUID(), name: "The Hunting Party", image: "The Hunting Party", songs: [
-            Song(id: UUID(), name: "Song 5", time: "3:54"),
-            Song(id: UUID(), name: "Song 6", time: "4:51"),
-            Song(id: UUID(), name: "Song 7", time: "3:24"),
-            Song(id: UUID(), name: "Song 8", time: "4:11"),
-        ]),
-        Album(id: UUID(), name: "One More Light", image: "One More Light", songs: [
-            Song(id: UUID(), name: "Song 9", time: "3:54"),
-            Song(id: UUID(), name: "Song 10", time: "4:51"),
-            Song(id: UUID(), name: "Song 11", time: "3:24"),
-            Song(id: UUID(), name: "Song 12", time: "4:11"),
-        ]),
-        Album(id: UUID(), name: "Living Things", image: "Living Things", songs: [
-            Song(id: UUID(), name: "Song 13", time: "3:54"),
-            Song(id: UUID(), name: "Song 14", time: "4:51"),
-            Song(id: UUID(), name: "Song 15", time: "3:24"),
-            Song(id: UUID(), name: "Song 16", time: "4:11"),
-        ]),
-        Album(id: UUID(), name: "Minutes to Midnight", image: "Minutes to Midnight", songs: [
-            Song(id: UUID(), name: "Song 17", time: "3:54"),
-            Song(id: UUID(), name: "Song 18", time: "4:51"),
-            Song(id: UUID(), name: "Song 19", time: "3:24"),
-            Song(id: UUID(), name: "Song 20", time: "4:11"),
-        ])]
+    @ObservedObject var data : MusicData
     
     @State private var currentAlbum : Album?
     
@@ -100,7 +70,7 @@ struct ContentView: View {
             ScrollView {
                 ScrollView(.horizontal, showsIndicators: false, content: {
                     HStack {
-                        ForEach(self.albums, id: \.self, content: {
+                        ForEach(self.data.albums, id: \.self, content: {
                             album in
                             AlbumArt(album: album, isWithText: true).onTapGesture {
                                 self.currentAlbum = album
@@ -109,23 +79,21 @@ struct ContentView: View {
                     }
                 })
                 VStack {
-                    ForEach((self.currentAlbum?.songs ?? self.albums.first?.songs) ?? [
-                        Song(id: UUID(), name: "Song 1", time: "3:54"),
-                        Song(id: UUID(), name: "Song 2", time: "4:51"),
-                        Song(id: UUID(), name: "Song 3", time: "3:24"),
-                        Song(id: UUID(), name: "Song 4", time: "4:11"),
-                        ], id: \.self, content: {
-                            song in
-                            SongCell(album: self.currentAlbum ?? self.albums.first!, song: song)
-                    })
+                    if self.data.albums.first == nil {
+                        EmptyView()
+                    } else {
+                        ForEach((self.currentAlbum?.songs ?? self.data.albums.first?.songs) ?? [
+                            Song(id: UUID(), name: "Song 1", time: "3:54"),
+                            Song(id: UUID(), name: "Song 2", time: "4:51"),
+                            Song(id: UUID(), name: "Song 3", time: "3:24"),
+                            Song(id: UUID(), name: "Song 4", time: "4:11"),
+                            ], id: \.self, content: {
+                                song in
+                                SongCell(album: self.currentAlbum ?? self.data.albums.first!, song: song)
+                        })
+                    }
                 }
             }.navigationBarTitle("Linkin Park")
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
