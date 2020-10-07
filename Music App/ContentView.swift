@@ -49,13 +49,14 @@ struct SongCell : View {
             HStack {
                 ZStack {
                     Circle().frame(width: 50, height: 50, alignment: .center).foregroundColor(.blue)
-                    
                     Circle().frame(width: 20, height: 20, alignment: .center).foregroundColor(.white)
                 }
+                .padding(.trailing, 20)
                 Text(song.name).bold()
                 Spacer()
                 Text(song.time)
-            }.padding(20)
+            }.padding(.horizontal, 20)
+                .padding(.vertical, 10)
         }).buttonStyle(PlainButtonStyle())
     }
 }
