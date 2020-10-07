@@ -34,7 +34,7 @@ class MusicData: ObservableObject {
                     self.albums.append(Album(id: UUID(), name: name, image: image, songs: songsArray))
                 }
             } else {
-                print(error)
+                print(error ?? "Could not get data from Firebase")
             }
         }
     }

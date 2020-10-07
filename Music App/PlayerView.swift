@@ -14,7 +14,7 @@ struct PlayerView: View {
     @State var album : Album
     @State var song : Song
     @State var player = AVPlayer()
-    @State var isPlaying : Bool = false
+    @State var isPlaying : Bool = true
     
     var body: some View {
         ZStack {
@@ -50,17 +50,17 @@ struct PlayerView: View {
     
     func playSong() {
         let storage = Storage.storage().reference(forURL: self.song.file)
-        storage.downloadURL { (url, error) in                if error != nil {
-            print(error)
-        } else {
-            
-            do {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-            } catch {
-                
-            }
-            self.player = AVPlayer(playerItem: AVPlayerItem(url: url!))
-            self.player.play()
+        storage.downloadURL { (url, error) in
+            if error != nil {
+                print(error ?? "URL could not be parsed")
+            } else {
+                do {
+                    try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+                } catch {
+                    
+                }
+                self.player = AVPlayer(playerItem: AVPlayerItem(url: url!))
+                self.player.play()
             }
         }
     }
