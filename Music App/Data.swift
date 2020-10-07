@@ -26,7 +26,8 @@ class MusicData: ObservableObject {
                         for song in songs {
                             let songName = song.value["name"] as? String ?? ""
                             let songTime = song.value["time"] as? String ?? ""
-                            songsArray.append(Song(id: UUID(), name: songName, time: songTime))
+                            let songFile = song.value["file"] as? String ?? ""
+                            songsArray.append(Song(id: UUID(), name: songName, time: songTime, file: songFile))
                         }
                     }
                     

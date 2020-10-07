@@ -19,6 +19,7 @@ struct Song : Hashable {
     var id : UUID
     var name : String
     var time : String
+    var file : String
 }
 
 struct AlbumArt : View {
@@ -83,10 +84,10 @@ struct ContentView: View {
                         EmptyView()
                     } else {
                         ForEach((self.currentAlbum?.songs ?? self.data.albums.first?.songs) ?? [
-                            Song(id: UUID(), name: "Song 1", time: "3:54"),
-                            Song(id: UUID(), name: "Song 2", time: "4:51"),
-                            Song(id: UUID(), name: "Song 3", time: "3:24"),
-                            Song(id: UUID(), name: "Song 4", time: "4:11"),
+                            Song(id: UUID(), name: "Song 1", time: "3:54", file: ""),
+                            Song(id: UUID(), name: "Song 2", time: "4:51", file: ""),
+                            Song(id: UUID(), name: "Song 3", time: "3:24", file: ""),
+                            Song(id: UUID(), name: "Song 4", time: "4:11", file: ""),
                             ], id: \.self, content: {
                                 song in
                                 SongCell(album: self.currentAlbum ?? self.data.albums.first!, song: song)

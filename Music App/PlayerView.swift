@@ -7,11 +7,13 @@
 //
 
 import SwiftUI
+import Firebase
+import AVFoundation
 
 struct PlayerView: View {
-    var album : Album
-    var song : Song
-    
+    @State var album : Album
+    @State var song : Song
+    @State var player = AVPlayer()
     @State var isPlaying : Bool = false
     
     var body: some View {
@@ -33,7 +35,7 @@ struct PlayerView: View {
                         
                         Button(action: self.playPause, label: {
                             Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill").resizable()
-                            }).frame(width: 70, height: 70, alignment: .center).padding()
+                        }).frame(width: 70, height: 70, alignment: .center).padding()
                         
                         Button(action: self.next, label: {
                             Image(systemName: "arrow.right.circle").resizable()
@@ -41,18 +43,58 @@ struct PlayerView: View {
                     }
                 }.edgesIgnoringSafeArea(.bottom).frame(height: 200, alignment: .center)
             }
+        }.onAppear() {
+            self.playSong()
+        }
+    }
+    
+    func playSong() {
+        let storage = Storage.storage().reference(forURL: self.song.file)
+        storage.downloadURL { (url, error) in                if error != nil {
+            print(error)
+        } else {
+            
+            do {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            } catch {
+                
+            }
+            self.player = AVPlayer(playerItem: AVPlayerItem(url: url!))
+            self.player.play()
+            }
         }
     }
     
     func playPause() {
         self.isPlaying.toggle()
+        if isPlaying == false {
+            player.pause()
+        } else {
+            player.play()
+        }
     }
     
     func next() {
-        
+        if let currentIndex = album.songs.firstIndex(of: song) {
+            if currentIndex == album.songs.count - 1 {
+                
+            } else {
+                player.pause()
+                song = album.songs[currentIndex + 1]
+                self.playSong()
+            }
+        }
     }
     
     func previous() {
-        
+        if let currentIndex = album.songs.firstIndex(of: song) {
+            if currentIndex == 0 {
+                
+            } else {
+                player.pause()
+                song = album.songs[currentIndex - 1]
+                self.playSong()
+            }
+        }
     }
 }
